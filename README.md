@@ -1,3 +1,7 @@
+# URL
+https://yamahare.github.io/react_first_lesson/
+
+# 初期
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
