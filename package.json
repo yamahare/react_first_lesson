@@ -2,6 +2,7 @@
   "name": "react_first_lesson",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://yamahare.github.io/react_first_lesson",
   "dependencies": {
     "gh-pages": "^2.1.1",
     "react": "^16.11.0",
