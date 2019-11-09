@@ -5,10 +5,10 @@ function Countup(){
 
     useEffect(() => {
         const interval = setInterval(() => {
-        setCounter(counter+1)
+            setCounter(counter => counter+1)
         }, 1000);
         return () => clearInterval(interval);
-    }, [counter]);
+    }, []);
 
     return (
         <div>
