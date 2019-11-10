@@ -6,6 +6,7 @@ import Form from './components/Form';
 import Click from './components/Click';
 import Countup from './components/Countup';
 import Welcome from './components/Welcome';
+import Rect from './components/Rect';
 import * as serviceWorker from './serviceWorker';
 
 let elm = (
@@ -16,6 +17,7 @@ let elm = (
         <Form></Form>
         <Welcome name="Taro" old="14"></Welcome>
         <Welcome name="砂糖" old="20"></Welcome>
+        <Rect></Rect>
     </div>
 );
 ReactDOM.render(elm, document.getElementById('root'));
