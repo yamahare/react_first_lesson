@@ -9,14 +9,16 @@ import Welcome from './components/Welcome';
 import Rect from './components/Rect';
 import Messages from './components/Messages';
 import FormSubmit from './components/FormSubmit';
+import CounterContext from './contexts/counter'
 import * as serviceWorker from './serviceWorker';
 
+let contextValue = `コンテキストの値です ${Math.floor(Math.random() * Math.floor(10))}`;
 let doCheck = (event)=>{
     alert(`${event.target.value}は長すぎます。`)
 }
 
 let elm = (
-    <div>
+    <CounterContext.Provider value={contextValue}>
         <App></App>
         <Countup></Countup>
         <Click></Click>
@@ -31,7 +33,7 @@ let elm = (
             改行は必要ありません。
         </Messages>
         <FormSubmit maxLength="10" onCheck={doCheck}></FormSubmit>
-    </div>
+    </CounterContext.Provider>
 );
 ReactDOM.render(elm, document.getElementById('root'));
 

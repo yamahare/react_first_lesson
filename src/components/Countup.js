@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import CounterContext from '../contexts/counter'
 
 function Countup(){
     const [counter, setCounter] = useState(0);
+    const dataContext = useContext(CounterContext);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -12,6 +14,7 @@ function Countup(){
 
     return (
         <div>
+            <h2>{dataContext}</h2>
             <p>
                count: {counter} 
             </p>

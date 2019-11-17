@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext} from 'react';
+import CounterContext from '../contexts/counter'
 import logo from './logo.svg';
 import './App.css';
 
@@ -12,6 +13,8 @@ let printMsg = (msg, size, color) => {
 }
 
 function App() {
+
+  const dataContext = useContext(CounterContext);
 
   const url = 'https://yamahare.github.io/react_first_lesson/';
   const flg = true;
@@ -36,36 +39,39 @@ function App() {
   ]
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {printMsg('最初のメッセージ', 30, '#ddd')}
-        {printMsg('2番目メッセージ', 20, '#aaa')}
-        {printMsg('3番目メッセージ', 10, '#333')}
-        <a className="App-link" href={url} target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>{dataContext}</h2>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          {printMsg('最初のメッセージ', 30, '#ddd')}
+          {printMsg('2番目メッセージ', 20, '#aaa')}
+          {printMsg('3番目メッセージ', 10, '#333')}
+          <a className="App-link" href={url} target="_blank" rel="noopener noreferrer">
+            Learn React
+          </a>
+        </header>
 
-      {flg ? <p>trueだよ</p> : <p>falseだよ</p> }
-      {(()=>
-        <dl>test</dl> 
-      )()}
+        {flg ? <p>trueだよ</p> : <p>falseだよ</p> }
+        {(()=>
+          <dl>test</dl> 
+        )()}
 
-      <table style={table}>
-        <tr>
-          <th style={th}>name</th>
-          <th style={th}>mail</th>
-          <th style={th}>age</th>
-        </tr>
-        {data.map((value) => (
+        <table style={table}>
           <tr>
-            <td style={td}>{value.name}</td>
-            <td style={td}>{value.mail}</td>
-            <td style={td}>{value.age}</td>
+            <th style={th}>name</th>
+            <th style={th}>mail</th>
+            <th style={th}>age</th>
           </tr>
-        ))}
-      </table>
+          {data.map((value) => (
+            <tr>
+              <td style={td}>{value.name}</td>
+              <td style={td}>{value.mail}</td>
+              <td style={td}>{value.age}</td>
+            </tr>
+          ))}
+        </table>
+      </div>
     </div>
   );
 }
