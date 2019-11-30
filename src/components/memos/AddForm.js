@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMemo } from '../store/memos';
+import { addMemo } from '../../store/memos';
 
 function AddForm(){
     const [message, setMessage] = useState();

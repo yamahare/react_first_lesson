@@ -14,9 +14,11 @@ import CounterContext from './contexts/counter'
 import counterStore from './store/counter'
 import ReduxMessage from './components/ReduxMessage'
 import memosStore from './store/memos'
-import Memos from './components/Memos'
+import Memos from './components/memos/Memos'
 import * as serviceWorker from './serviceWorker';
-import AddForm from './components/AddForm';
+import AddForm from './components/memos/AddForm';
+import DelForm from './components/memos/DelForm';
+import FindForm from './components/memos/FindForm';
 
 let contextValue = `コンテキストの値です ${Math.floor(Math.random() * Math.floor(10))}`;
 let doCheck = (event)=>{
@@ -48,6 +50,8 @@ let elm = (
         <Provider store={memosStore}>
             <h1>Memo</h1>
             <AddForm></AddForm>
+            <DelForm></DelForm>
+            <FindForm></FindForm>
             <Memos></Memos>
         </Provider>
     </CounterContext.Provider>
