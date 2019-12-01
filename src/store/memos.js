@@ -1,7 +1,9 @@
 import { createStore } from 'redux';
+import storage from 'redux-persist/lib/storage'
+import { persistStore, persistReducer } from 'redux-persist'
 
 const initData = { 
-    data: [{message: 'sample data', created: new Date()}],
+    data: [],
     message: 'please type message',
     mode: 'default',
     fdata: []
@@ -16,10 +18,22 @@ const memos = (state=initData, action) => {
     }
 }
 
+const persistConfig = {
+    key: 'memo',
+    storage,
+    blacklist: ['message', 'mode', 'fdata'],
+    whitelist: ['data']
+}
+
+const persistedReducer = persistReducer(persistConfig, memos);
+
+
 const addReduce = (state, action) => {
+    let d = new Date();
+    let f = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
     let data = {
         message: action.message,
-        created: new Date()
+        created: f
     };
     let newdata = state.data.slice();
     newdata.unshift(data);
@@ -77,4 +91,5 @@ export function findMemo(text){
         find: text
     }
 }
-export default createStore(memos);
+export let memosStore = createStore(persistedReducer);
+export let memosPStore = persistStore(memosStore);

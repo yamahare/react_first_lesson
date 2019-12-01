@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
@@ -13,12 +14,14 @@ import FormSubmit from './components/FormSubmit';
 import CounterContext from './contexts/counter'
 import counterStore from './store/counter'
 import ReduxMessage from './components/ReduxMessage'
-import memosStore from './store/memos'
+import {memosStore, memosPStore} from './store/memos'
 import Memos from './components/memos/Memos'
 import * as serviceWorker from './serviceWorker';
 import AddForm from './components/memos/AddForm';
 import DelForm from './components/memos/DelForm';
 import FindForm from './components/memos/FindForm';
+import { store, pstore } from './store/counterPersist'
+import CountupPersist from './components/CountupPersist'
 
 let contextValue = `コンテキストの値です ${Math.floor(Math.random() * Math.floor(10))}`;
 let doCheck = (event)=>{
@@ -48,12 +51,22 @@ let elm = (
         </Provider>
         <hr></hr>
         <Provider store={memosStore}>
-            <h1>Memo</h1>
-            <AddForm></AddForm>
-            <DelForm></DelForm>
-            <FindForm></FindForm>
-            <Memos></Memos>
+            <PersistGate loading={<p>loading...</p>} persistor={memosPStore}>
+                <h1>Memo</h1>
+                <AddForm></AddForm>
+                <DelForm></DelForm>
+                <FindForm></FindForm>
+                <Memos></Memos>
+            </PersistGate>
         </Provider>
+        <hr></hr>
+        <h1>永続化Reduxテスト</h1>
+        <Provider store={store}>
+            <PersistGate loading={<p>loading...</p>} persistor={pstore}>
+                <CountupPersist></CountupPersist>
+            </PersistGate>
+        </Provider>
+
     </CounterContext.Provider>
 );
 ReactDOM.render(elm, document.getElementById('root'));
