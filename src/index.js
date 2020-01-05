@@ -22,6 +22,20 @@ import DelForm from './components/memos/DelForm';
 import FindForm from './components/memos/FindForm';
 import { store, pstore } from './store/counterPersist'
 import CountupPersist from './components/CountupPersist'
+import firebase from 'firebase';
+import Sampledata from './components/fire/Sampledata'
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBPqbSuHiBoOxRn98vxia4NxRRbveeeFiQ",
+    authDomain: "react-test-e96fe.firebaseapp.com",
+    databaseURL: "https://react-test-e96fe.firebaseio.com",
+    projectId: "react-test-e96fe",
+    storageBucket: "react-test-e96fe.appspot.com",
+    messagingSenderId: "568310761966",
+    appId: "1:568310761966:web:aa5c7725ef9a50ad18a6ff",
+    measurementId: "G-JHFTRJBYKT"
+};
+firebase.initializeApp(firebaseConfig);
 
 let contextValue = `コンテキストの値です ${Math.floor(Math.random() * Math.floor(10))}`;
 let doCheck = (event)=>{
@@ -66,6 +80,9 @@ let elm = (
                 <CountupPersist></CountupPersist>
             </PersistGate>
         </Provider>
+        <hr></hr>
+        <h1>From firebase</h1>
+        <Sampledata />
 
     </CounterContext.Provider>
 );
